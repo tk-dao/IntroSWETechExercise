@@ -21,3 +21,11 @@ media/
 .DS_Store
 .vscode/
 *.swp
+
+# Write-up docs (not part of the actual app)
+Write ups/
+TuankhanhDao_TechExercisePrep*
+
+# SSH key folder
+keys/
+*.pem
