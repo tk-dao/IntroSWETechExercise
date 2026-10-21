@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 
 from .forms import PartForm
@@ -40,7 +40,21 @@ def add_part(request):
     else:
         form = PartForm()
         
-    return render(request, "pages/add_part.html", {"form": form})
+    return render(request, "pages/add_part.html", {"form": form, "title": "Add a part"})
+
+
+def edit_part(request, pk):
+    part = get_object_or_404(Part, pk=pk)
+    if request.method == "POST":
+        form = PartForm(request.POST, instance=part)
+        if form.is_valid():
+            form.save()
+            return redirect("part_list")
+    else:
+        form = PartForm(instance=part)
+    return render(request, "pages/add_part.html", {"form": form, "title": "Edit part"})
+
+
 
     
     

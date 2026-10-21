@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Part - PCDex</title>
+    <title>{{ title }} - PCDex</title>
 </head>
 <body>
-    <h1>Add a part</h1>
+    <h1>{{ title }}</h1>
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
