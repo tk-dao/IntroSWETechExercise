@@ -6,5 +6,8 @@ class PartForm(forms.ModelForm):
     class Meta:
         model = Part
         fields = ["name", "category", "brand", "price", "build", "notes"]
+        labels = {
+            "name": "Part name",
+        }
         
         
