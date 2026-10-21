@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Part - PCDex</title>
+</head>
+<body>
+    <h1>Add a part</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Save Part</button>
+    </form>
+    <p><a href="{%url 'part_list' %}">Back to parts</a></p>
+</body>
+</html>
+
