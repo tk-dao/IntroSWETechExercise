@@ -2,12 +2,11 @@
 
 {% block content %}
     <div class="page-header">
-        <h1>PCDex</h1>
+        <h1>🖥️ PCDex</h1>
         <a href="{% url 'add_part' %}"> + Add a part</a>
     </div>
 
-
-    <form method="get">
+    <form method="get" class="search">
         <input type="text" name="q" value="{{query}}" placeholder="Search name, brand, build...">
         <select name="category">
             <option value="">All categories</option>
@@ -18,28 +17,30 @@
         <button type="submit">Search</button>
         <a href="{% url 'part_list' %}">Clear</a>
     </form>
-
-    {% if parts %}
-    <table>
-        <tr>
-            <th>Name</th><th>Category</th><th>Brand</th>
-            <th>Price</th><th>Build</th><th>Notes</th><th></th>
-        </tr>
-        {% for part in parts %}
-        <tr>
-            <td>{{part.name}}</td>
-            <td>{{part.get_category_display}}</td>
-            <td>{{part.brand}}</td>
-            <td>${{part.price}}</td>
-            <td>{{part.build}}</td>
-            <td>{{part.notes}}</td>
-            <td><a href="{% url 'edit_part' part.pk %}">Edit</a></td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% elif query or category %}
-    <p>No parts match your search.</p>
-    {% else %}
-    <p>No parts yet.</p>
-    {% endif %}
+    
+    <div class="card table-card">
+        {% if parts %}
+        <table>
+            <tr>
+                <th>Name</th><th>Category</th><th>Brand</th>
+                <th>Price</th><th>Build</th><th>Notes</th><th></th>
+            </tr>
+            {% for part in parts %}
+            <tr>
+                <td>{{part.name}}</td>
+                <td>{{part.get_category_display}}</td>
+                <td>{{part.brand}}</td>
+                <td>${{part.price}}</td>
+                <td>{{part.build}}</td>
+                <td>{{part.notes}}</td>
+                <td><a href="{% url 'edit_part' part.pk %}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% elif query or category %}
+        <p>No parts match your search.</p>
+        {% else %}
+        <p>No parts yet.</p>
+        {% endif %}
+    </div>
 {% endblock %}

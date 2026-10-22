@@ -3,12 +3,12 @@
 {% block title %}{{ title }} - PCDex{% endblock %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
-    <div class="form-box">
+    <h1 class="page-header">{{ title }}</h1>
+    <div class="form-box card">
         <form method="post">
             {% csrf_token %}
             {{form.as_p}}
-            <div>
+            <div class="form-actions">
                 <button type="submit">Save Part</button>
                 <a href="{%url 'part_list' %}">Back to parts</a>
             </div>
