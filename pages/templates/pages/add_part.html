@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ title }} - PCDex</title>
-</head>
-<body>
+{% extends "pages/base.html" %}
+
+{% block title %}{{ title }} - PCDex{% endblock %}
+
+{% block content %}
     <h1>{{ title }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Save Part</button>
-    </form>
-    <p><a href="{%url 'part_list' %}">Back to parts</a></p>
-</body>
-</html>
+    <div class="form-box">
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div>
+                <button type="submit">Save Part</button>
+                <a href="{%url 'part_list' %}">Back to parts</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
 
